@@ -1,0 +1,10 @@
+import { Router } from "express";
+import { requireAuth } from "../../middlewares/auth.middleware";
+import { createTodoController, getTodosController, getTodoByIdController, updateTodoController, deleteTodoController } from "./todos.controller";
+const router = Router();
+router.post("/", requireAuth, createTodoController);
+router.get("/", requireAuth, getTodosController);
+router.get("/:id", requireAuth, getTodoByIdController);
+router.patch("/:id", requireAuth, updateTodoController);
+router.delete("/:id", requireAuth, deleteTodoController);
+export default router;
